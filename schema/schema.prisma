@@ -1,0 +1,26 @@
+generator client {
+  provider        = "prisma-client-js"
+  engineType      = "binary"
+  output          = "../client"
+  previewFeatures = ["omitApi", "prismaSchemaFolder"]
+}
+
+generator clientWebView {
+  provider        = "prisma-client-js"
+  output          = "../client-webview"
+  previewFeatures = ["omitApi", "prismaSchemaFolder"]
+}
+
+generator json {
+  provider = "prisma-json-types-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model dummy{
+  id String @id @default(cuid())
+  createdAt DateTime @default(now())
+}
